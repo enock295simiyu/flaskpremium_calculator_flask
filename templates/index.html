@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-{% load static %}
 {% block title %}
 Dashboard
 {% endblock %}
@@ -31,10 +30,10 @@ Dashboard
                 <a class="nav-link active" aria-current="page" href="#">Home Loan</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'personal_loan' %}">Personal Loan</a>
+                <a class="nav-link" href="#">Personal Loan</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'car_loan' %}">Car Loan</a>
+                <a class="nav-link" href="#">Car Loan</a>
               </li>
 
             </ul>
@@ -48,7 +47,7 @@ Dashboard
               <!-- /.card-header -->
               <!-- form start -->
               <form id="quickForm" method="post">
-                {% csrf_token %}
+
                 <div class="card-body">
                   <div class="form-group">
                     <label for="username">Loan Amount</label>
@@ -244,8 +243,8 @@ Dashboard
             </div>
           </div>
           <div class="col-7">
-              <form method="post" action="{% url 'comment' %}">
-                  {% csrf_token %}
+              <form method="post" action="#">
+
 
             <div class="form-group">
               <label for="inputEmail">E-Mail</label>
@@ -274,7 +273,7 @@ Dashboard
               {% for comment in comments %}
                 <div class="card-comment">
                   <!-- User image -->
-                  <img class="img-circle img-sm" src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Image">
+                  <img class="img-circle img-sm" src="static/dist/img/user3-128x128.jpg" alt="User Image">
 
                   <div class="comment-text">
                     <span class="username">
