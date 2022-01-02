@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-{% load static %}
 {% block title %}
 Dashboard
 {% endblock %}
@@ -295,7 +294,7 @@ Dashboard
               {% for comment in comments %}
                 <div class="card-comment">
                   <!-- User image -->
-                  <img class="img-circle img-sm" src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Image">
+                  <img class="img-circle img-sm" src="static/dist/img/user3-128x128.jpg" alt="User Image">
 
                   <div class="comment-text">
                     <span class="username">
