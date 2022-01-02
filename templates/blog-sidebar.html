@@ -4,7 +4,7 @@
        <h3>Blog Category</h3>
        <ul class="aa-catg-nav">
          {% for category in all_categories %}
-         <li><a href="{% url 'blog_category' pk=category.id %}">{{category}}</a></li>
+         <li><a href="#">{{category}}</a></li>
          {% endfor %}
        </ul>
      </div>
@@ -14,9 +14,9 @@
          <ul>
            {% for blog in recent_blogs%}
            <li>
-             <a class="aa-cartbox-img" href="{% url 'blog_slug' blog.slug %}"><img src="{{blog.image.url}}" alt="img" style="width:100%;"></a>
+             <a class="aa-cartbox-img" href="#"><img src="{{blog.image.url}}" alt="img" style="width:100%;"></a>
              <div class="aa-cartbox-info">
-               <h4><a href="{% url 'blog_slug' blog.slug %}">{{blog.title}}</a></h4>
+               <h4><a href="#">{{blog.title}}</a></h4>
                <p>{{blog.created_datetime}}</p>
              </div>
            </li>

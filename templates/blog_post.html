@@ -107,8 +107,8 @@ Dashboard
             </div>
           </div>
           <div class="col-7">
-              <form method="post" id="comments_form" action="{% url 'blog_comment' %}">
-                  {% csrf_token %}
+              <form method="post" id="comments_form" action="#">
+
                   <input name="blog_id" value="{{ blog.id }}" hidden>
             <div class="form-group">
               <label for="inputName">Name</label>

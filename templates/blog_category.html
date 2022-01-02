@@ -37,7 +37,7 @@ Dashboard
                 <div class="h-entry">
                   <img src="{{ blog.image.url }}" alt="Image" class="img-fluid">
                   <h2 class="font-size-regular"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
-                  <div class="meta mb-4">{{ blog.author }}<span class="mx-2">&bullet;</span> {{ blog.created_datetime }}<span class="mx-2">&bullet;</span> <a href="{% url 'blog_category' pk=blog.category.first.id %}">{{ blog.category.first }}</a></div>
+                  <div class="meta mb-4">{{ blog.author }}<span class="mx-2">&bullet;</span> {{ blog.created_datetime }}<span class="mx-2">&bullet;</span> <a href="#">{{ blog.category.first }}</a></div>
                   <p>{{ blog.blog_description|truncatechars:170 }}</p>
                 </div>
               </div>
@@ -125,7 +125,7 @@ Dashboard
             </div>
           </div>
           <div class="col-7">
-              <form method="post" action="{% url 'comment' %}">
+              <form method="post" action="#">
                   {% csrf_token %}
             <div class="form-group">
               <label for="inputName">Name</label>

@@ -35,8 +35,8 @@ Dashboard
                 <div class="alert alert-block alert-success" id="order_success">
 					<button type="button" class="close" data-dismiss="alert"></button>
 					<strong> Welcome Blogger!<br> </strong>
-					<strong><a href="{% url 'blog_add'%}" target="_blank">Add Blog</a><br/></strong>
-          					<strong><a href="{% url 'blog_blogger_posts'%}" target="_blank">View / Edit my blogs </a>  <br></strong>
+					<strong><a href="#" target="_blank">Add Blog</a><br/></strong>
+          					<strong><a href="#" target="_blank">View / Edit my blogs </a>  <br></strong>
 					<p> Always remember that content is King. Statistics proves that first results on google averages 2000 words.
 					It's important to include keywords, but in a natural way. Write beatiful content circulating around the keyword.
 					For example, if you want to write about Pizzas, write about the vegetables and how they need to be cut.
@@ -52,7 +52,7 @@ Dashboard
                 <div class="h-entry">
                   <img src="{{ blog.image.url }}" alt="Image" class="img-fluid">
                   <h2 class="font-size-regular"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
-                  <div class="meta mb-4">{{ blog.author }}<span class="mx-2">&bullet;</span> {{ blog.created_datetime }}<span class="mx-2">&bullet;</span> <a href="{% url 'blog_category' pk=blog.category.first.id %}">{{ blog.category.first }}</a></div>
+                  <div class="meta mb-4">{{ blog.author }}<span class="mx-2">&bullet;</span> {{ blog.created_datetime }}<span class="mx-2">&bullet;</span> <a href="#">{{ blog.category.first }}</a></div>
                   <p>{{ blog.blog_description|truncatechars:170 }}</p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ Dashboard
               <h3 class="h5 text-black mb-3">Blog categories</h3>
               <ul class="list-unstyled">
                   {% for category in all_categories %}
-                <li class="mb-2"><a href="{% url 'blog_category' pk=category.id %}">{{ category.category }}</a> </li>
+                <li class="mb-2"><a href="#">{{ category.category }}</a> </li>
                   {% endfor %}
 
               </ul>
@@ -149,7 +149,7 @@ Dashboard
             </div>
           </div>
           <div class="col-7">
-              <form method="post" action="{% url 'comment' %}">
+              <form method="post" action="#">
                   {% csrf_token %}
             <div class="form-group">
               <label for="inputName">Name</label>

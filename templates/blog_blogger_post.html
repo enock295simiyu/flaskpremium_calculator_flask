@@ -34,8 +34,8 @@ Dashboard
                 <div class="alert alert-block alert-success" id="order_success">
 					<button type="button" class="close" data-dismiss="alert"></button>
 					<strong> Welcome Blogger!<br> </strong>
-					<strong><a href="{% url 'blog_add'%}" target="_blank">Add Blog</a><br/></strong>
-          					<strong><a href="{% url 'blog_blogger_posts'%}" target="_blank">View / Edit my blogs </a>  <br></strong>
+					<strong><a href="#" target="_blank">Add Blog</a><br/></strong>
+          					<strong><a href="#" target="_blank">View / Edit my blogs </a>  <br></strong>
 					<p> Always remember that content is King. Statistics proves that first results on google averages 2000 words.
 					It's important to include keywords, but in a natural way. Write beautiful content circulating around the keyword.
 					For example, if you want to write about Pizzas, write about the vegetables and how they need to be cut.
@@ -51,7 +51,7 @@ Dashboard
                 <div class="h-entry">
                   <img src="{{ blog.image.url }}" alt="Image" class="img-fluid">
                   <h2 class="font-size-regular"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
-                  <p><a href="{% url 'blog_edit' blog.id %}">Edit Blog</a> </p>
+                  <p><a href="#">Edit Blog</a> </p>
                     {% if blog.is_approved %}
                   <p><a href="{{ blog.get_absolute_url }}">View Blog</a> </p>
                     {% endif %}

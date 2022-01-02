@@ -27,13 +27,13 @@ Dashboard
       <div class="row">
           <ul class="nav nav-tabs">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home Loan</a>
+                <a class="nav-link" href="/">Home Loan</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Personal Loan</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'car_loan' %}">Car Loan</a>
+                <a class="nav-link" href="/">Car Loan</a>
               </li>
 
             </ul>
@@ -243,7 +243,7 @@ Dashboard
             </div>
           </div>
           <div class="col-7">
-              <form method="post" action="{% url 'comment' %}">
+              <form method="post" action="#">
                   {% csrf_token %}
 
             <div class="form-group">
