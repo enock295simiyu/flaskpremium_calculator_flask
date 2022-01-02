@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Edit Blog</h1>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 row">
+                 <div class="row">
+           <div class="col-md-10 mb-5">
+
+
+
+            <form id="blog_edit_form" method="POST" class="p-5 bg-white" enctype="multipart/form-data">
+              {% csrf_token %}
+              <h2 class="h4 text-black mb-5">Edit Blog</h2>
+
+              <div class="row form-group">
+                <div class="col-md-6">
+                    {{ form.title.errors }}
+                  <label class="text-black" for="fname">{{ form.title.label_tag }}</label>
+                  {{ form.title }}
+                  {{ form.title.help_text }}
+
+                </div>
+              </div>
+
+
+              <div class="row form-group">
+
+                <div class="col-md-12">
+                    {{ form.blog_description.errors }}
+                  <label class="text-black" for="email">{{ form.blog_description.label_tag }}</label>
+                  {{ form.blog_description }}
+                    {{ form.blog_description.help_text }}
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                    {{ form.content.errors }}
+                  <label class="text-black" for="message">{{ form.content.label_tag }}</label>
+                  {{ form.content }}
+                    <div class="col-12">
+                        {{ form.media }}
+                    </div>
+                    {{ form.content.help_text }}
+                </div>
+              </div>
+                 <div class="row form-group">
+
+                <div class="col-md-6">
+                    {{ form.image.errors }}
+                  <label class="text-black" for="email">{{ form.image.label_tag }}</label>
+                  {{ form.image }}
+                    {{ form.image.help_text }}
+                </div>
+              </div>
+                 <div class="row form-group">
+
+                <div class="col-md-6">
+                    {{ form.author.errors }}
+                  <label class="text-black" for="email">{{ form.author.label_tag }}</label>
+                  {{ form.author }}
+                    {{ form.author.help_text }}
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Submit Blog" class="btn btn-primary btn-md text-white">
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+          <div class="row col-12">
+              <div class="col-12">
+
+              <!-- /.card-body -->
+            </div>
+              </div>
+          </div>
+
+
+          </div>
+          </div>
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+    <script>
+    $(document).ready(function(){
+
+$.validator.addMethod('email',function(value,element){
+             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   			 return re.test(String(value).toLowerCase());
+         });
+$.validator.addMethod('phone_number',function(value,element){
+             var phone_number = new RegExp('^[6-9][0-9]{9}$');
+             return phone_number.test(value);
+         });
+
+
+$('#contact_form').validate({
+        rules : {
+            name:"required",
+            email:{required:true,
+            		email:true,
+            		},
+            message:"required",
+            phone:{required:true,
+            		phone_number:true
+            		},
+            },
+        errorClass : 'error_red',
+        highlight : function(element, errorClass) {
+            errorClass = 'error_red'
+            $(element).addClass(errorClass);
+        },
+        unhighlight : function(element, errorClass) {
+            errorClass = 'error_red'
+            $(element).removeClass(errorClass);
+        },
+        messages:{
+            name:"Please enter name",
+            email:{required:"Please enter a valid email",
+            		email:"Please enter a valid email",
+            	   },
+           	phone:{
+					  required:"Please enter a phone number",
+                      phone_number:"Please enter a valid phone number"
+                      },
+            message:"Please enter message",
+        },
+        submitHandler: function(form){
+            if (account_exists==1)
+            {   $("#force_login").modal('show')
+                return false
+            }
+            form.submit()
+        }
+
+    });
+});
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Home Loan Calculator </h1>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 row">
+                <div class="card card-primary  col-12 row">
+              <div class="card-header">
+                <h3 class="card-title">Loan Details</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form id="quickForm" method="post">
+                {% csrf_token %}
+                <div class="card-body col-12 row">
+                    <div class="form-group col-4">
+                    <label for="username">Home Value(HV)</label>
+                    <input type="number" name="home-value" class="form-control" id="home-value" placeholder="Home Value" required value="500000">
+
+                  </div>
+                    <div class="form-group col-4">
+                    <label for="username">Down Payment(%)(DP)</label>
+                    <input type="number" name="down-payment" class="form-control" id="down-payment" placeholder="Down payment" required value="20">
+
+                  </div>
+                    <div class="form-group col-4">
+                    <label for="username">Loan Insurance(LI)</label>
+                    <input type="number" name="loan-insurance" class="form-control" id="loan-insurance" placeholder="Loan Insurance" required value="0">
+
+                  </div>
+                    <div class="form-group col-4">
+                    <label for="username">Loan Amount(HV + LI – DP)</label>
+                    <input type="number" name="loan-amount" class="form-control" id="loan-amount" placeholder="Loan Amount" required value="4000000">
+                    </div>
+                  <div class="form-group col-4" >
+                    <label for="password">Interest</label>
+                    <input type="number" name="interest" class="form-control" id="interest" placeholder="Interest" required value="10.5">
+
+                  </div>
+
+                    <div class="form-group col-4">
+                    <label for="password">Loan Tenure(Monthly)</label>
+                    <input type="number" name="tenure" class="form-control" id="tenure" placeholder="Tenure" required value="240">
+
+                  </div>
+
+
+                        <div class="form-group col-4">
+                    <label for="password">Loan Fees & Charges(%)</label>
+                    <input type="number" name="fees" class="form-control" id="fees" placeholder="Loan Fees & Charges" required value="0.25">
+
+                  </div>
+                        <div class="form-group col-4">
+                    <label for="password">Start Month & Year</label>
+                    <input type="date" name="start-month-year" class="form-control" id="start-month-year" placeholder="Loan Fees & Charges" required>
+
+                  </div>
+                    <div class="col-12">
+                    <h2>Home Owners Expenses</h2>
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="form-group col-4">
+                    <label for="password">One-Time Expenses</label>
+                    <input type="number" name="one-time-expenses" class="form-control" id="one-time-expenses" placeholder="One Time Expenses" required value="500000">
+
+                  </div>
+                    <div class="form-group col-4">
+                    <label for="password">Property Taxes Per Year</label>
+                    <input type="number" name="property-taxes-per-year" class="form-control" id="property-taxes-per-year" placeholder="Property Taxes Per Year" required value="12500">
+
+                  </div>
+                    <div class="form-group col-4">
+                    <label for="password">Home Insurance Per Year</label>
+                    <input type="number" name="home-insurance-per-year" class="form-control" id="home-insurance-per-year" placeholder="Home Loan Insurance Per Year" required value="2500">
+
+                  </div>
+                     <div class="form-group col-4">
+                    <label for="password">Maintenance Expenses Per Month</label>
+                    <input type="number" name="maintanance-expenses-per-month" class="form-control" id="maintanance-expenses-per-month" placeholder="Maintenance Expenses Per Month" required value="2500">
+
+                  </div>
+                    <div class="row col-12">
+                        <div class="col-12">
+                            <table  class="table">
+                                <thead>
+                                <th>Principal And Intrest(EMI)</th>
+                                <th id="emi-amount">24043</th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Property Taxes</td>
+                                    <td id="property-tax">1042</td>
+                                </tr>
+                                <tr>
+                                    <td>Home Insurance</td>
+                                    <td id="home-insurance">208</td>
+                                </tr>
+                                <tr>
+                                    <td>Maintenance Expenses</td>
+                                    <td id="maintanance">2500</td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td>Total Monthly Payment</td>
+                                    <td id="total-monthly-payment">27793</td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row col-12">
+                        <div id="home-pie-chart" class="col-12">
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <table  class="table">
+
+                                <tbody>
+                                <tr>
+                                    <td>Down Payment, Fees & One-time Expenses</td>
+                                    <td id="down_payment_fees_one_time">1042</td>
+                                </tr>
+                                <tr>
+                                    <td>Loan Amount</td>
+                                    <td id="principal-loan-amount">208</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Interest</td>
+                                    <td id="total_intrest">2500</td>
+                                </tr>
+                                <tr>
+                                    <td>Taxes, Home Insurance & Maintenance</td>
+                                    <td id="taxes_home_insurance">2500</td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td>Total of All Payments</td>
+                                    <td id="total_of_all_payments">27793</td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                    </div>
+                <!-- /.card-body -->
+                  </div>
+              </form>
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+          <div class="row col-12">
+              <div class="col-12">
+                  <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Payment Break Down</h3>
+              </div>
+              <!-- ./card-header -->
+              <div class="card-body p-0">
+
+
+                  <div class="col-12">
+                      <div id="chart" style="width: 100%;"></div>
+                  </div>
+
+
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+              </div>
+          </div>
+          <div class="row col-12">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Expandable Table Tree</h3>
+              </div>
+              <!-- ./card-header -->
+              <div class="card-body p-0">
+
+                <div class="container col-12">
+
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Principal (A)</th>
+                    <th scope="col">Interest (B)</th>
+                    <th scope="col" style="word-wrap: break-word;max-width: 170px;">Taxes, Home Insurance & Maintenance (C)</th>
+                    <th scope="col">Total Payment (A+B+C)</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Loan to be paid</th>
+                  </tr>
+                </thead>
+                <tbody id="input-data-body">
+
+
+                        </tbody>
+                      </table>
+                    </div>
+
+              </div>
+
+
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+              <div class="row col-12">
+                  <h2>How to Use Home Loan EMI Calculator?</h2><p>Using our Home Loan EMI Calculator, you can calculate how much monthly and total expenditure you really incur by purchasing a home using your bank home loan.</p><p><strong>Home Loan Details</strong> includes single premium loan insurance and processing fees.</p><ul>
+<li><strong>Home Value</strong> is the actual price of the home you purchased (i.e., sale deed value).</li>
+<li><strong>Down Payment, aka Margin</strong>, is the total money you paid to the seller or builder from your own pocket, entered either in Rupees or as a percentage of Home Value.</li>
+<li><strong>Loan Insurance </strong>is the single premium amount, for the<a href="https://emicalculator.net/home-loan-protection-plan-what-bank-officials-wont-tell-you"> Home Loan Protection Plan</a> (HLPP) OR Term Insurance Plan, that gets included in your home loan amount. If you want to guesstimate this amount, use the <a href="https://www.licindia.in/premium_calculator.htm" target="_blank" rel="noopener">LIC premium calculator</a> to calculate yearly premium for eTerm plan using your age, loan term and loan amount for Sum Assured. You then multiply this number by your loan tenure.</li>
+<li><strong>Loan Amount</strong> is calculated as <strong>Home Value + Loan Insurance — Down Payment</strong>.</li>
+<li><strong>Interest Rate</strong> is…the 10th wonder of the world! <a href="http://www.goodreads.com/quotes/76863-compound-interest-is-the-eighth-wonder-of-the-world-he" target="_blank" rel="noopener">When its compounded, it ranks 8th</a>.</li>
+<li><strong>Loan Fees &amp; Charges</strong> includes Processing Fees, Administrative Charges etc. along with service taxes, entered either in Rupees or as a percentage of Loan Amount.</li></ul><p><strong>Homeowner Expenses</strong> can be entered either in Rupees or as a percentage of Home Value.&nbsp; You will not pay property taxes and home insurance premium each month, but it is included in the total monthly payment with the assumption that you are setting aside this amount (either through <a title="Everything You Wanted to Know About Escrows" href="https://emicalculator.net/recurring-deposits-an-incredibly-useful-product">Recurring Deposit</a> or some other means) every month. This will ensure that you will have the necessary money to make the payment once or twice a year. Please note that the recurring expenses will change over the lifetime of the home loan due to inflation and other factors. They will also continue beyond the home loan tenure. You should consider all these factors, especially when making a <a title="Knowing if it’s Time to Rent or Buy" href="https://emicalculator.net/buy-or-rent-financial-factors-that-you-must-not-ignore-while-making-your-decision">Rent vs. Buy</a><span class="Apple-converted-space">&nbsp;</span><a href="https://emicalculator.net/factors-to-consider-in-buying-vs-renting-a-home">decision</a>.</p><ul>
+<li><strong>One-time Expenses</strong> can include Registration Fees, Stamp Duty, bribe you paid to that pan chewing Govt Babu, money you spent on sprucing up your new home and performing a lavish house warming ceremony (after all, this is a great occasion for your spouse to show off in front of his/her friends &amp; relatives).</li>
+<li><strong>Property Taxes</strong> is the annual payment that you grudgingly make to your local municipal body.</li>
+<li><strong><a href="https://emicalculator.net/should-you-buy-home-insurance">Home Insurance</a></strong> is the yearly premium you pay to insure your home—if it isn’t already covered by loan insurance plan.</li>
+<li><strong>Monthly Maintenance Expenses </strong>is what you pay to keep your apartment shining, clean and ‘water-full’. If its an independent house, you can assume your annual maintenance expenditure to be about one percent of your home value. Divide this number by 12 to arrive at monthly maintenance amount.</li></ul><p><a href="https://emicalculator.net/which-loan-should-you-prepay-first"><strong>Prepayments</strong> </a>help you pay off your loan faster and reduce total interest cost.</p><p>We wish you an affordable home loan and a great new home!</p><br>
+<br>
+              </div>
+        </div>
+          <div class="row col-12">
+              <div class="card" style="width:100%">
+        <div class="card-body row">
+          <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <h2>Comment</h2>
+              <p class="lead mb-5"><br>
+                Please Leave us a comment. We love hearing from you.
+              </p>
+            </div>
+          </div>
+          <div class="col-7">
+              <form method="post" action="{% url 'comment' %}">
+                  {% csrf_token %}
+
+            <div class="form-group">
+              <label for="inputEmail">E-Mail</label>
+              <input type="email" id="inputEmail" class="form-control" name="email">
+            </div>
+                  <div class="form-group">
+              <label for="inputEmail">Website</label>
+              <input type="url" id="inputEmail" class="form-control" name="website">
+            </div>
+
+            <div class="form-group">
+              <label for="inputMessage">Message</label>
+              <textarea id="inputMessage" class="form-control" rows="4" name="comment"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Leave Comment">
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+          </div>
+          <div class="row col-12">
+          <div class="card">
+          <div class="card-body">
+              {% for comment in comments %}
+                <div class="card-comment">
+                  <!-- User image -->
+                  <img class="img-circle img-sm" src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Image">
+
+                  <div class="comment-text">
+                    <span class="username">
+
+                        {{ comment.name }}
+                      <span class="text-muted float-right">{{ comment.created_on }}</span>
+                    </span><!-- /.username -->
+                    {{ comment.comment }}
+                  </div>
+                  <!-- /.comment-text -->
+                </div>
+                  <hr>
+              {% endfor %}
+
+          </div>
+          </div>
+          </div>
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}

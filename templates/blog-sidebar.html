@@ -1,0 +1,36 @@
+<div class="col-md-3">
+   <aside class="aa-blog-sidebar">
+     <div class="aa-sidebar-widget">
+       <h3>Blog Category</h3>
+       <ul class="aa-catg-nav">
+         {% for category in all_categories %}
+         <li><a href="{% url 'blog_category' pk=category.id %}">{{category}}</a></li>
+         {% endfor %}
+       </ul>
+     </div>
+     <div class="aa-sidebar-widget">
+       <h3>Recent Post</h3>
+       <div class="aa-recently-views">
+         <ul>
+           {% for blog in recent_blogs%}
+           <li>
+             <a class="aa-cartbox-img" href="{% url 'blog_slug' blog.slug %}"><img src="{{blog.image.url}}" alt="img" style="width:100%;"></a>
+             <div class="aa-cartbox-info">
+               <h4><a href="{% url 'blog_slug' blog.slug %}">{{blog.title}}</a></h4>
+               <p>{{blog.created_datetime}}</p>
+             </div>
+           </li>
+           {% endfor %}
+         </ul>
+       </div>
+     </div>
+   </aside>
+ </div>
+ <p align="center">
+ <script type="text/javascript" language="javascript">
+      var aax_size='160x600';
+      var aax_pubname = 'manifestservi-21';
+      var aax_src='302';
+    </script>
+    <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+  </p>

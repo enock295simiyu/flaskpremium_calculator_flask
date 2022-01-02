@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Blog</h1>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 row">
+              <section class="site-section">
+      <div class="container">
+        <div class="row">
+             <div class="row">
+        <div class="col-md-12">
+          <div class="aa-blog-archive-area">
+            <div class="row">
+              <div class="col-md-9">
+                <!-- Blog details -->
+                <div class="aa-blog-content aa-blog-details">
+                  <article class="aa-blog-content-single">
+                    <h1>{{blog.title}}</h1>		<!-- ------------------------------------------------>
+                     <div class="aa-article-bottom">
+                      <div class="aa-post-author">
+                        Posted By <a href="#">{{blog.author}}</a>
+                      </div>
+                      <div class="aa-post-date">
+                        {{blog.created_datetime}}
+                      </div>
+                    </div>
+                    <figure class="aa-blog-img">
+                      <a href="#"><img src="{{blog.image.url}}" title="{{blog.title}}" alt="{{blog.title}}"></a>
+                    </figure>
+                    {{blog.content|safe}}
+                    <div class="aa-blog-comment-threat">
+                    {% if blog_comments %}
+                    <h3 >Comments</h3>
+                    <div class="comments">
+                      <ul class="commentlist">
+                        {% for comment in blog_comments %}
+                        <li>
+                          <div class="media">
+                            <div class="media-body">
+                             <h4 class="author-name">Name:{{comment.name}}</h4>
+                             <span class="comments-date"> {{comment.datetime}}</span>
+                             <p>{{comment.comment}}</p>
+                            </div>
+                          </div>
+                        </li>
+						{% endfor %}
+                      </ul>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <!-- blog comments form -->
+
+                </div>
+              </div>
+			  {% include 'blog-sidebar.html'%}
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
+    </section>
+
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+          <div class="row col-12">
+              <div class="col-12">
+
+              <!-- /.card-body -->
+            </div>
+              </div>
+          </div>
+
+          <div class="row col-12">
+              <div class="card" style="width:100%">
+        <div class="card-body row">
+          <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <h2>Comment</h2>
+              <p class="lead mb-5"><br>
+                Your email address will not be published. Required fields are marked
+              </p>
+            </div>
+          </div>
+          <div class="col-7">
+              <form method="post" id="comments_form" action="{% url 'blog_comment' %}">
+                  {% csrf_token %}
+                  <input name="blog_id" value="{{ blog.id }}" hidden>
+            <div class="form-group">
+              <label for="inputName">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="" size="30" >
+
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" value="" aria-required="true" >
+
+            </div>
+
+
+            <div class="form-group">
+              <label for="inputMessage">Comment</label>
+                <textarea name="comment" class="form-control" id="comment" cols="45" rows="8" aria-required="true"></textarea>
+   <p class="form-allowed-tags">
+                        <code> Abusive comments can lead to investigation from cyber crime*</code>
+                      </p>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Leave Comment">
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+          </div>
+          <div class="row col-12">
+          <div class="card">
+          <div class="card-body">
+              {% for comment in comments %}
+                <div class="card-comment">
+                  <!-- User image -->
+                  <img class="img-circle img-sm" src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Image">
+
+                  <div class="comment-text">
+                    <span class="username">
+
+                        {{ comment.name }}
+                      <span class="text-muted float-right">{{ comment.created_on }}</span>
+                    </span><!-- /.username -->
+                    {{ comment.comment }}
+                  </div>
+                  <!-- /.comment-text -->
+                </div>
+                  <hr>
+              {% endfor %}
+
+          </div>
+          </div>
+          </div>
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
