@@ -24,7 +24,7 @@
   <div class="card">
     <div class="card-body register-card-body">
         <div class="row col-12">
-             {% for message in messages %}
+             {% for message in get_flashed_messages %}
                 <div class="alert alert-danger alert-dismissible" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times</span>
@@ -40,7 +40,7 @@
           {{ form.hidden_tag() }}
         <div class="input-group mb-3">
 
-          {{ form.username }}
+          {{ form.username(placeholder="Username",class='form-control') }}
           {% for error in form.username.errors %}
           <p>{{ error }}</p>
           {% endfor %}
@@ -52,7 +52,7 @@
         </div>
           <div class="input-group mb-3">
 
-          {{ form.first_name }}
+          {{ form.first_name(placeholder="First Name",class='form-control') }}
           {% for error in form.first_name.errors %}
           <p>{{ error }}</p>
           {% endfor %}
@@ -64,7 +64,7 @@
         </div>
           <div class="input-group mb-3">
 
-          {{ form.last_name }}
+          {{ form.last_name(placeholder="Last Name",class='form-control') }}
           {% for error in form.last_name.errors %}
               <p>{{ error }}</p>
               {% endfor %}
@@ -76,7 +76,7 @@
         </div>
         <div class="input-group mb-3">
 
-            {{ form.email }}
+            {{ form.email(placeholder="Email",class='form-control') }}
             {% for error in form.email.errors %}
               <p>{{ error }}</p>
               {% endfor %}
@@ -88,7 +88,7 @@
         </div>
         <div class="input-group mb-3">
 
-            {{ form.password1 }}
+            {{ form.password1(placeholder="Password",class='form-control') }}
             {% for error in form.password1.errors %}
               <p>{{ error }}</p>
               {% endfor %}
@@ -100,7 +100,7 @@
         </div>
         <div class="input-group mb-3">
 
-            {{ form.password2 }}
+            {{ form.password2(placeholder="Confirm Password",class='form-control') }}
             {% for error in form.password2.errors %}
               <p>{{ error }}</p>
               {% endfor %}
