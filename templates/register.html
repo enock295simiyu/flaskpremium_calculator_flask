@@ -18,7 +18,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="#">Loan Interest Calculator</a>
+    <a href="{{ url_for('home') }}">Loan Interest Calculator</a>
   </div>
 
   <div class="card">
@@ -37,11 +37,13 @@
 
       <form  method="post">
 
-          {% csrf_token %}
+          {{ form.hidden_tag() }}
         <div class="input-group mb-3">
 
           {{ form.username }}
-          {{ form.username.errors }}
+          {% for error in form.username.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -51,7 +53,9 @@
           <div class="input-group mb-3">
 
           {{ form.first_name }}
-          {{ form.first_name.errors }}
+          {% for error in form.first_name.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -61,7 +65,9 @@
           <div class="input-group mb-3">
 
           {{ form.last_name }}
-          {{ form.last_name.errors }}
+          {% for error in form.last_name.errors %}
+              <p>{{ error }}</p>
+              {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -71,7 +77,9 @@
         <div class="input-group mb-3">
 
             {{ form.email }}
-            {{ form.email.errors }}
+            {% for error in form.email.errors %}
+              <p>{{ error }}</p>
+              {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -81,7 +89,9 @@
         <div class="input-group mb-3">
 
             {{ form.password1 }}
-            {{ form.password1.errors }}
+            {% for error in form.password1.errors %}
+              <p>{{ error }}</p>
+              {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -91,7 +101,9 @@
         <div class="input-group mb-3">
 
             {{ form.password2 }}
-            {{ form.password2.errors }}
+            {% for error in form.password2.errors %}
+              <p>{{ error }}</p>
+              {% endfor %}
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -113,14 +125,14 @@
       <div class="social-auth-links text-center">
         <p>- OR -</p>
 
-        <a href="{% provider_login_url 'google' %}" class="btn btn-block btn-danger">
+        <a href="#" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i>
           Sign up using Google
         </a>
       </div>
 
 
-      <a href="#" class="text-center">I already have a membership</a>
+      <a href="{{ url_for('login') }}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
