@@ -5,7 +5,7 @@
  * --------------------------------------------
  */
 
-import $, { trim } from 'jquery'
+import $, {trim} from 'jquery'
 
 /**
  * Constants
