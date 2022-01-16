@@ -25,7 +25,7 @@
   <div class="card">
     <div class="card-body login-card-body">
         <div class="row col-12">
-             {% for message in get_flashed_messages %}
+             {% for message in get_flashed_messages() %}
                 <div class="alert alert-danger alert-dismissible" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times</span>

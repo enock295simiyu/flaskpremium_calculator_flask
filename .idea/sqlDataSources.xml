@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="092ac9dd-e52b-4ade-8f13-0a8dd4ff307f" name="premium_calculator_database Mapping">
+      <data-sources db="bae89584-5a7f-45e9-affc-253e02c3714d" />
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="3d495268-70dd-4cb5-a5f9-96b4b774dfe3" />
+          <option name="name" value="premium_calculator_database (DDL)" />
+          <option name="languageId" value="SQLite" />
+          <option name="urls">
+            <array />
+          </option>
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
