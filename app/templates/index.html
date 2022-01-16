@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Loan Calculator </h1>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+      <div class="row">
+          <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home Loan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Personal Loan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Car Loan</a>
+              </li>
+
+            </ul>
+        </div>
+        <div class="row">
+          <div class="col-12">
+                <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Loan Details</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form id="quickForm" method="post">
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="username">Loan Amount</label>
+                    <input type="number" name="amount" class="form-control" id="amount" placeholder="Amount" required value="1000">
+                      <div class="slidecontainer">
+                          <input type="range" min="1" max="10000000" value="1000" class="slider" id="myRange">
+
+                        <datalist id="tickmarks">
+                          <option value="0" label="0"></option>
+                          <option value="10" label="1000000"></option>
+                          <option value="20" label="2000000">></option>
+                          <option value="30" label="3000000">></option>
+                          <option value="40" label="4000000">></option>
+                          <option value="50" label="5000000"></option>
+                          <option value="60" label="6000000">></option>
+                          <option value="70" label="7000000">></option>
+                          <option value="80" label="8000000">></option>
+                          <option value="90" label="9000000">></option>
+                          <option value="100" label="10000000"></option>
+                        </datalist>
+                    </div>
+
+                  <div class="form-group">
+                    <label for="password">Interest</label>
+                    <input type="number" name="interest" class="form-control" id="interest" placeholder="Interest" required value="10.5">
+                       <div class="slidecontainer">
+                          <input type="range" min="0" max="20" value="10.5" class="slider" id="interestRange">
+
+                        <datalist id="tickmarks">
+                          <option value="0" label="0"></option>
+                          <option value="10" label="2"></option>
+                          <option value="20" label="4">></option>
+                          <option value="30" label="6">></option>
+                          <option value="40" label="8">></option>
+                          <option value="50" label="10"></option>
+                          <option value="60" label="12">></option>
+                          <option value="70" label="14">></option>
+                          <option value="80" label="16">></option>
+                          <option value="90" label="18">></option>
+                          <option value="100" label="20"></option>
+                        </datalist>
+                    </div>
+
+                  </div>
+                    <div class="form-group">
+                    <label for="password">Loan Tenure(Monthly)</label>
+                    <input type="number" name="tenure" class="form-control" id="tenure" placeholder="Tenure" required value="12">
+                         <div class="slidecontainer">
+                          <input type="range" min="0" max="360" value="12" class="slider" id="tenureRange">
+
+                        <datalist id="tickmarks">
+                          <option value="0" label="0"></option>
+                          <option value="10" label="36"></option>
+                          <option value="20" label="72">></option>
+                          <option value="30" label="108">></option>
+                          <option value="40" label="144">></option>
+                          <option value="50" label="180"></option>
+                          <option value="60" label="216">></option>
+                          <option value="70" label="252">></option>
+                          <option value="80" label="288">></option>
+                          <option value="90" label="324">></option>
+                          <option value="100" label="360"></option>
+                        </datalist>
+                    </div>
+                  </div>
+                      <div class="row">
+            <div class="col-md-4 col-sm-6 col-12">
+            <div class="col-12">
+            <div class="info-box">
+
+              <div class="info-box-content">
+                <span class="info-box-text">Loan EMI</span>
+                  <span class="info-box-number">₹<label id="emi-amount">8999</label></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+                <div class="col-12">
+            <div class="info-box">
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Interest Payable</span>
+                  <span class="info-box-number">₹<label id="total-intrest-paid">139951</label></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+                <div class="col-12">
+            <div class="info-box">
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Payment
+(Principal + Interest)</span>
+                  <span class="info-box-number">₹<label id="total-payment"> 539951</label></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+            </div>
+                      <div class="col-md-8 col-sm-6 col-12">
+                          <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+                      </div>
+
+                </div>
+                <!-- /.card-body -->
+                  </div>
+              </form>
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+          <div class="row col-12">
+              <div class="col-12">
+                  <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Payment Break Down</h3>
+              </div>
+              <!-- ./card-header -->
+              <div class="card-body p-0">
+
+
+                  <div class="col-12">
+                      <div id="chart" style="width: 100%;"></div>
+                  </div>
+
+
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+              </div>
+          </div>
+          <div class="row col-12">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Expandable Table Tree</h3>
+              </div>
+              <!-- ./card-header -->
+              <div class="card-body p-0">
+
+                <div class="container col-12">
+
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Principal (A)</th>
+                    <th scope="col">Interest (B)</th>
+                    <th scope="col">Total Payment (A+B)</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Loan to be paid</th>
+                  </tr>
+                </thead>
+                <tbody id="input-data-body">
+
+
+                        </tbody>
+                      </table>
+                    </div>
+
+              </div>
+
+
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+              <div id="pg-7-0" class="panel-grid panel-no-style"><div id="pgc-7-0-0" class="panel-grid-cell"><div id="panel-7-0-0-0" class="so-panel widget widget_sow-editor panel-first-child panel-last-child" data-index="0"><div class="so-widget-sow-editor so-widget-sow-editor-base"><div class="siteorigin-widget-tinymce textwidget"><h2>What is EMI?</h2><p>Equated Monthly Installment - EMI for short - is the amount payable every month to the bank or any other financial institution until the loan amount is fully paid off. It consists of the interest on loan as well as part of the principal amount to be repaid. The sum of principal amount and interest is divided by the tenure, i.e., number of months, in which the loan has to be repaid. This amount has to be paid monthly. The interest component of the EMI would be larger during the initial months and gradually reduce with each payment. The exact percentage allocated towards payment of the principal depends on the interest rate. Even though your monthly EMI payment won't change, the proportion of principal and interest components will change with time.&nbsp;With each successive payment, you'll pay more towards the principal and less in interest.</p><p id="internal-source-marker_0.04359114885107196">Here's the formula to calculate EMI:</p><p><img loading="lazy" class="size-full wp-image-4031 alignleft" src="https://emicalculator.net/wp-content/uploads/emiformula.png?x28526" alt="EMI Formula" width="320" height="75" srcset="https://emicalculator.net/wp-content/uploads/emiformula.png 320w, https://emicalculator.net/wp-content/uploads/emiformula-300x70.png 300w" sizes="(max-width: 320px) 100vw, 320px"></p><p>where</p><p><strong>E</strong> is EMI</p><p><strong>P</strong> is Principal Loan Amount</p><p><strong>r</strong> is rate of interest calculated on monthly basis. (i.e., r = Rate of Annual interest/12/100. If rate of interest is 10.5% per annum, then r = 10.5/12/100=0.00875)</p><p><strong>n</strong> is loan term / tenure / duration in number of months</p><blockquote><p>For example, if you borrow ₹10,00,000 from the bank at 10.5% annual interest for a period of 10 years (i.e., 120 months), then EMI = ₹10,00,000 *&nbsp;0.00875 * (1 + 0.00875)<sup>120</sup> / ((1 + 0.00875)<sup>120</sup> - 1) = ₹13,493. i.e., you will have to pay ₹13,493 for 120 months to repay the entire loan amount. The total amount payable will be ₹13,493 * 120 = ₹16,19,220 that includes ₹6,19,220 as interest toward the loan.</p></blockquote><p>Computing EMI for different combinations of principal loan amount, interest rates and loan term using the above <a title="EMI Formula" href="https://emicalculator.net/loan-emi-calculation-work/" target="_blank" rel="noopener noreferrer">EMI formula</a> by hand or MS Excel is time consuming, complex and error prone. Our EMI calculator automates this calculation for you and gives you the result in a split second along with visual charts displaying payment schedule and the break-up of total payment.</p><h2 id="internal-source-marker_0.6092460654906617">How to Use EMI Calculator?</h2><p style="text-align: left;">With colourful charts and instant results, our EMI Calculator is easy to use, intuitive to understand and is quick to perform. You can calculate EMI for home loan, car loan, personal loan, education loan or any other fully amortizing loan using this calculator.</p><p>Enter the following information in the EMI Calculator:</p><ul>
+<li>Principal loan amount you wish to avail (rupees)</li>
+<li>Loan term (months or years)</li>
+<li>Rate of interest (percentage)</li>
+<li>EMI in advance OR EMI in arrears (for car loan only)</li></ul><p>Use the slider to adjust the values in the EMI calculator form. If you need to enter more precise values, you can type the values directly in the relevant boxes provided above. As soon as the values are changed using the slider (or hit the 'tab' key after entering the values directly in the input fields), EMI calculator will re-calculate your monthly payment (EMI) amount.</p><p>A pie chart depicting the break-up of total payment (i.e., total principal vs. total interest payable) is also displayed. It displays the percentage of total interest versus principal amount in the sum total of all payments made against the loan. The payment schedule table showing payments made every month / year&nbsp;for the entire loan duration is displayed along with a chart showing interest and principal components paid each year. A portion of each payment is for the interest while the remaining amount is applied towards the principal balance. During initial loan period, a large portion of each payment is devoted to interest. With passage of time, larger portions pay down the principal. The payment schedule also shows the intermediate outstanding balance for each year which will be carried over to the next year.</p><p>Want to make part prepayments to shorten your home loan schedule and reduce your total interest outgo? Use our <a href="https://emicalculator.net/home-loan-emi-calculator/">Home Loan EMI Calculator with Prepayments</a>. If you wish to&nbsp; calculate how much loan you can afford OR determine advertised vs actual loan interest rate (along with loan APR) on a purchase, use our <a href="https://emicalculator.net/loan-calculator/">loan calculator</a>.</p><h2>Floating Rate EMI Calculation</h2><p>We suggest that you calculate floating / variable rate EMI by taking into consideration two opposite scenarios, i.e., optimistic (deflationary) and pessimistic (inflationary) scenario. Loan amount and loan tenure, two components required to calculate the EMI are under your control; i.e., you are going to decide how much loan you have to borrow and how long your loan tenure should be. But interest rate is decided by the banks &amp; HFCs based on rates and policies set by <a title="Reserve Bank of India" href="http://www.rbi.org.in/" target="_blank" rel="noopener noreferrer">RBI</a>. As a borrower, you should consider the two extreme possibilities of increase and decrease in the rate of interest and calculate your EMI under these two conditions. Such calculation will help you decide how much EMI is affordable, how long your loan tenure should be and how much you should borrow.</p><p><strong>Optimistic (deflationary) scenario</strong>: Assume that the rate of interest comes down by 1% - 3% from the present rate. Consider this situation and calculate your EMI. In this situation, your EMI will come down or you may opt to shorten the loan tenure. Ex: If you avail home loan to purchase a house as an investment, then optimistic scenario enables you to compare this with other investment opportunities.</p><p><strong>Pessimistic (inflationary) scenario</strong>: In the same way, assume that the rate of interest is hiked by 1% - 3%. Is it possible for you to continue to pay the EMI without much struggle? Even a 2% increase in rate of interest can result in significant rise in your monthly payment for the entire loan tenure.</p><p>Such calculation helps you to plan for such future possibilities. When you take a loan, you are making a financial commitment for next few months, years or decades. So consider the best as well as worst cases...and be ready for both. In short, hope for the best but be prepared for the worst!</p><p><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?x28526"></script><br>
+<br>
+<ins class="adsbygoogle" style="display: block;" data-ad-client="ca-pub-6020664305604651" data-ad-slot="8554094722" data-ad-format="rectangle"></ins><br> <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></p></div></div></div></div></div>
+        </div>
+          <div class="row col-12">
+              <div class="card" style="width:100%">
+        <div class="card-body row">
+          <div class="col-5 text-center d-flex align-items-center justify-content-center">
+            <div class="">
+              <h2>Comment</h2>
+              <p class="lead mb-5"><br>
+                Please Leave us a comment. We love hearing from you.
+              </p>
+            </div>
+          </div>
+          <div class="col-7">
+              <form method="post" action="#">
+
+
+            <div class="form-group">
+              <label for="inputEmail">E-Mail</label>
+              <input type="email" id="inputEmail" class="form-control" name="email">
+            </div>
+                  <div class="form-group">
+              <label for="inputEmail">Website</label>
+              <input type="url" id="inputEmail" class="form-control" name="website">
+            </div>
+
+            <div class="form-group">
+              <label for="inputMessage">Message</label>
+              <textarea id="inputMessage" class="form-control" rows="4" name="comment"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Leave Comment">
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+          </div>
+          <div class="row col-12">
+          <div class="card">
+          <div class="card-body">
+              {% for comment in comments %}
+                <div class="card-comment">
+                  <!-- User image -->
+                  <img class="img-circle img-sm" src="static/dist/img/user3-128x128.jpg" alt="User Image">
+
+                  <div class="comment-text">
+                    <span class="username">
+
+                        {{ comment.user.username }} says
+                      <span class="text-muted float-right">{{ comment.created_on }}</span>
+                    </span><!-- /.username -->
+                    {{ comment.comment }}
+                  </div>
+                  <!-- /.comment-text -->
+                </div>
+                  <hr>
+              {% endfor %}
+
+          </div>
+          </div>
+          </div>
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}

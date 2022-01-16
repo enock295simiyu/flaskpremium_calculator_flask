@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">My Blogs</h1>
+          </div><!-- /.col -->
+
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 row">
+              <section class="site-section">
+      <div class="container">
+        <div class="row">
+        {% if blogger %}
+            <div class="row">
+                <div class="alert alert-block alert-success" id="order_success">
+					<button type="button" class="close" data-dismiss="alert"></button>
+					<strong> Welcome Blogger!<br> </strong>
+					<strong><a href="#" target="_blank">Add Blog</a><br/></strong>
+          					<strong><a href="#" target="_blank">View / Edit my blogs </a>  <br></strong>
+					<p> Always remember that content is King. Statistics proves that first results on google averages 2000 words.
+					It's important to include keywords, but in a natural way. Write beautiful content circulating around the keyword.
+					For example, if you want to write about Pizzas, write about the vegetables and how they need to be cut.
+					Focus on long tail keywords after effective keyword research using tools like Ubersuggest.
+					</p>
+				</div>
+            </div>
+        {% endif %}
+          <div class="col-md-8">
+            <div class="row mb-5">
+                   {% for blog in blogger_posts %}
+              <div class="col-md-6 col-lg-6 mb-4 mb-lg-4">
+                <div class="h-entry">
+                  <img src="{{ blog.image.url }}" alt="Image" class="img-fluid">
+                  <h2 class="font-size-regular"><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
+                  <p><a href="#">Edit Blog</a> </p>
+                    {% if blog.is_approved %}
+                  <p><a href="{{ blog.get_absolute_url }}">View Blog</a> </p>
+                    {% endif %}
+                </div>
+              </div>
+                {% endfor %}
+
+            </div>
+          {% if all_blogs.has_other_pages %}
+            <div class="row">
+              <div class="col-12">
+                <div class="custom-pagination text-center">
+                    {% for i in all_blogs.paginator.page_range %}
+              {% if all_blogs.number == i %}
+                  <span>{{ i }}</span>
+                  {% else %}
+                  <a href="?page={{ i }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          </div>
+
+          <div class="col-md-3 ml-auto">
+          <!--
+            <div class="mb-5">
+              <h3 class="h5 text-black mb-3">Search</h3>
+              <form action="#" method="post">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+                </div>
+              </form>
+            </div>
+            -->
+
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+          <div class="row col-12">
+              <div class="col-12">
+
+              <!-- /.card-body -->
+            </div>
+              </div>
+          </div>
+
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock %}
