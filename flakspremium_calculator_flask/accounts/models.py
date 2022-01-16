@@ -3,8 +3,8 @@ from datetime import datetime
 from flask_login import UserMixin, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import app
-from settings import db
+from flakspremium_calculator_flask import app
+from flakspremium_calculator_flask.core.settings import db
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -13,6 +13,8 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), index=True, unique=True)
@@ -50,3 +52,11 @@ class AccountsManager:
         db.session.add(user)
         db.session.commit()
         return user
+
+    def get_user_by_id(self, user_id):
+        """
+        This function returns a user with a particular user id
+        :param user_id:
+        :return:
+        """
+        return User.get(user_id)

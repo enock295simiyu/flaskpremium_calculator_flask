@@ -1,18 +1,9 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import url_for, render_template
+from werkzeug.utils import redirect
 
-from accounts.accounts_handler import AccountsHandler
-from forms import RegistrationForm
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+from flakspremium_calculator_flask import app
+from flakspremium_calculator_flask.accounts.accounts_handler import AccountsHandler
+from flakspremium_calculator_flask.accounts.forms import RegistrationForm
 
 
 @app.route('/register', methods=['POST', 'GET'])
