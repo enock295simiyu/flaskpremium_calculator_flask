@@ -30,12 +30,16 @@
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
-          {% if not g.user %}
+          {% if not current_user.is_authenticated %}
               <li class="nav-item">
-                  <a href="{{ url_for('register') }}">Registrar</a>
+                  <a class="btn btn-primary" href="{{ url_for('register') }}">Registrar</a>
               </li>
               <li class="nav-item" style="margin-left: 20px">
-                  <a href="{{ url_for('login') }}">Login</a>
+                  <a class="btn btn-default" href="{{ url_for('login') }}">Login</a>
+              </li>
+              {% else %}
+              <li class="nav-item" style="margin-left: 20px">
+                  <a class="btn btn-info" href="{{ url_for('logout') }}">Logout</a>
               </li>
           {% endif %}
       </ul>

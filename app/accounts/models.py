@@ -8,19 +8,20 @@ from app.core.settings import db
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
+login_manager.login_view = "login"
+login_manager.login_message_category = "info"
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.get(user_id)
 
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), index=True, unique=True)
     email = db.Column(db.String(150), unique=True, index=True)
-    first_name = db.Column(db.String(50), index=True, unique=True)
-    last_name = db.Column(db.String(150), unique=True, index=True)
+    first_name = db.Column(db.String(50), index=True, unique=False)
+    last_name = db.Column(db.String(150), unique=False, index=True)
     password_hash = db.Column(db.String(150))
     joined_at = db.Column(db.DateTime(), default=datetime.utcnow, index=True)
 
