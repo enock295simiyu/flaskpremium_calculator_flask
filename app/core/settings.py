@@ -8,7 +8,7 @@ from config import SQLALCHEMY_DATABASE_URI
 
 app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
-migrate = Migrate()
+migrate = Migrate(app, db)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 
