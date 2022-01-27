@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app.core.settings import db
+from app.settings import db
 
 
 class Comments(db.Model):

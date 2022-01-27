@@ -1,5 +1,5 @@
+from dotenv import load_dotenv
 from flask import Flask
-
 
 # def create_app():
 #     app = Flask(__name__)
@@ -13,7 +13,9 @@ from flask import Flask
 #     migrate.init_app(app, db)
 #
 #     return app
-app = Flask(__name__)
 
+app = Flask(__name__)
+load_dotenv()
 from app.accounts import views
 from app.core import views
+from app.core import models
