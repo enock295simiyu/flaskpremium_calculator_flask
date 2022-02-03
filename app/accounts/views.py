@@ -29,7 +29,10 @@ def login():
     if form.validate_on_submit():
         user = AccountsHandler().get_user_by_email({'email': form.email.data})
         if user is not None and user.check_password(form.password.data):
-            login_user(user)
+            if form.remember:
+                login_user(user, remember=True)
+            else:
+                login_user(user, remember=True)
             flask.flash('Logged in successfully.')
             next = request.args.get("next")
             return redirect(next or url_for('home'))
