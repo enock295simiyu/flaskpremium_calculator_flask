@@ -7,7 +7,8 @@ from app.core.core_handler import CoreHandler
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    comments=CoreHandler().get_all_comments()
+    return render_template('index.html',comments=comments)
 
 
 @app.route('/comment', methods=['POST'])

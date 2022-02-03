@@ -41,3 +41,10 @@ class CoreManager:
             db.session.commit()
 
         return comment
+
+    def get_all_comments(self):
+        """
+        This function returns a list all comments
+        :return:
+        """
+        return Comments.query.all()
