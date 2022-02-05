@@ -12,6 +12,7 @@ email-validator = "*"
 flask-migrate = "*"
 python-dotenv = "*"
 flask-ckeditor = "*"
+flask-admin = "*"
 
 [dev-packages]
 

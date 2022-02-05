@@ -20,3 +20,7 @@ from app.accounts import views
 from app.core import views
 from app.core import models
 from app.blog import models
+from app.accounts import admin
+from app.blog import admin
+from app.core import admin
+from app import admin
