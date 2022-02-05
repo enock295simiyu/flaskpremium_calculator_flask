@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6dd125ff5db847c8537d836e8d4e1cf884b08f1a065c514074a40bcf3c7be14e"
+            "sha256": "7d6173e692565be139fc7b7eab56c02bed3a62df18a231defa084d5b7bcc3ed0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,11 +18,11 @@
     "default": {
         "alembic": {
             "hashes": [
-                "sha256:7c328694a2e68f03ee971e63c3bd885846470373a5b532cf2c9f1601c413b153",
-                "sha256:a9dde941534e3d7573d9644e8ea62a2953541e27bc1793e166f60b777ae098b4"
+                "sha256:6c0c05e9768a896d804387e20b299880fe01bc56484246b0dffe8075d6d3d847",
+                "sha256:ad842f2c3ab5c5d4861232730779c05e33db4ba880a08b85eb505e87c01095bc"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==1.7.5"
+            "version": "==1.7.6"
         },
         "click": {
             "hashes": [
@@ -63,6 +63,14 @@
             ],
             "index": "pypi",
             "version": "==2.0.2"
+        },
+        "flask-ckeditor": {
+            "hashes": [
+                "sha256:4b6aa0e831616b86c8c393cb1e5dcae8f62c66c16ef4316071dc7ccf77d4c9a1",
+                "sha256:aa95bf2fab8d4379fcbe5786310bb4fbae467016ed0149c407101e0e4c278fa8"
+            ],
+            "index": "pypi",
+            "version": "==0.4.6"
         },
         "flask-login": {
             "hashes": [

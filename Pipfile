@@ -11,6 +11,7 @@ flask-wtf = "*"
 email-validator = "*"
 flask-migrate = "*"
 python-dotenv = "*"
+flask-ckeditor = "*"
 
 [dev-packages]
 

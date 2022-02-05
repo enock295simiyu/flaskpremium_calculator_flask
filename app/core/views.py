@@ -7,8 +7,8 @@ from app.core.core_handler import CoreHandler
 
 @app.route('/')
 def home():
-    comments=CoreHandler().get_all_comments()
-    return render_template('index.html',comments=comments)
+    comments = CoreHandler().get_all_comments()
+    return render_template('index.html', comments=comments)
 
 
 @app.route('/comment', methods=['POST'])
@@ -29,4 +29,20 @@ def leave_comment():
         flash('Method not allowed')
         return redirect(url_for('home'))
 
+
+@app.route('/personal_loan')
+def personal_loan():
+    comments = CoreHandler().get_all_comments()
+    return render_template('personal_loan.html', comments=comments)
+
+
+@app.route('/car_loan')
+def car_loan():
+    comments = CoreHandler().get_all_comments()
+    return render_template('car_loan.html', comments=comments)
+
+@app.route('/home_loan_calculator')
+def home_loan_calculator():
+    comments = CoreHandler().get_all_comments()
+    return render_template('home_loan_calculator.html', comments=comments)
 

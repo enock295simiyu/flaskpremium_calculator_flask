@@ -19,3 +19,4 @@ load_dotenv()
 from app.accounts import views
 from app.core import views
 from app.core import models
+from app.blog import models
