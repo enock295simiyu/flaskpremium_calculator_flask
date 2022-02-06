@@ -18,6 +18,7 @@ app = Flask(__name__)
 load_dotenv()
 from app.accounts import views
 from app.core import views
+from app.blog import views
 from app.core import models
 from app.blog import models
 from app.accounts import admin

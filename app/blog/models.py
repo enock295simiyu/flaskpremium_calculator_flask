@@ -62,3 +62,59 @@ class BlogComments(db.Model):
         self.name = name
         self.email = email
         self.comment = comment
+
+
+class BlogManager:
+    def get_featured_blogs(self):
+        """
+        This function returns all featured blogs
+        :return:
+        """
+        return Blog.query.filter_by(is_featured=True)
+
+    def get_all_blog_categories(self):
+        """
+        This function returns all the blog categories saved in the database
+        :return:
+        """
+        return BlogCategory.query.all()
+
+    def get_5_recent_blogs(self):
+        """
+        This function returns the last 5 blogs created
+        :return:
+        """
+        return Blog.query.order_by(Blog.id.desc())[:5]
+
+    def get_blog_details(self, slug):
+        """
+        This function returns a specific blog by its slug
+        :return:
+        """
+        return Blog.query.filter(Blog.slug.ilike(slug)).last()
+
+    def get_blog_comments(self, blog_id):
+        """
+        This function returns all the comments of a particular blog
+        :param blog_id:
+        :return:
+        """
+        return BlogComments.query.filter_by(blog=blog_id)
+
+    def update_view_count(self, blog_id):
+        """
+        This function updates the view counts of a particular blog
+        :param blog_id:
+        :return:
+        """
+        blog = Blog.query.filter_by(id=blog_id).first()
+        blog.views += 1
+        db.session.commit()
+        return blog
+
+    def get_all_blogs(self,page):
+        """
+        This function returns all the blogs
+        :return:
+        """
+        return Blog.query.all()
